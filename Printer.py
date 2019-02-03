@@ -1,14 +1,19 @@
 def solution(priorities, location):
+    tmp = list()
+    for i,j in enumerate(priorities):
+        tmp.append([j,i])
     answer=0
-    a=priorities[priorities.index(max(priorities)):]
-    a.sort(reverse=True)
-    b=priorities[:priorities.index(max(priorities))]
+    a=tmp[priorities.index(max(priorities)):]
+    for i in range(len(a)):
+        a = tmp[priorities.index(max(priorities))+i:]
+        print(a)
+    b=tmp[:priorities.index(max(priorities))]
     b.sort(reverse=True)
-    c=a+b
-    if location>=priorities.index(max(priorities)):
-        answer=a.index(priorities[location])
-    else:
-        answer=len(a)+b.index(priorities[location])
-    return c,answer
 
-print(solution(	[1, 3, 9, 1, 1, 2], 0))
+    c=a+b
+    for i in range(0,len(c)):
+        if location == c[i][1]:
+            return c,i
+
+
+print(solution([1, 1, 9, 1, 1, 1], 0))
