@@ -4,4 +4,4 @@ def solution(n):
         answer+=int(str(n)[i])
     return answer
 
-print(solution(987))
+print(solution(9873))
